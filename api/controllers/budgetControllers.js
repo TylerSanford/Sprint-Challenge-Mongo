@@ -1,8 +1,8 @@
 const Budget = require('../models/budget');
-const Expense = require('../models/expense');
 
 const budgetCreate = (req, res) => {
   const { title, budgetAmount } = req.body;
+  console.log({ title, budgetAmount });
   const newBudget = new Budget({ title, budgetAmount });
   newBudget.save(newBudget, (err, savedBudget) => {
     if (err) {

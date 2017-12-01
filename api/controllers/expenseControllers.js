@@ -14,12 +14,12 @@ const expenseCreate = (req, res) => {
 };
 
 const expenseListAll = (req, res) => {
-  Category.find({})
-    .populate('budget category')
+  Expense.find({})
+    .populate('budget category') // lowercase because => referencing the schema property name, not ref name!!
     .exec()
-    .then(categories => {
-      if (categories.length === 0) throw new Error();
-      res.json(categories);
+    .then(expenses => {
+      if (expenses.length === 0) throw new Error();
+      res.json(expenses);
     })
     .catch(err => res.status(422).json(err));
 };
